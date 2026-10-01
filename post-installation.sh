@@ -39,6 +39,6 @@ fi
 git config --global core.editor "nano"
 
 echo "Moving scripts to path..."
-sudo mkdir /usr/bin/scripts
+sudo mkdir -p /usr/bin/scripts
 echo 'export PATH="$PATH:/usr/bin/scripts"' >> "$HOME/.bashrc" 
 sudo cp "$scriptDir"/scripts/* /usr/bin/scripts/
