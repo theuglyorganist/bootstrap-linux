@@ -1,0 +1,8 @@
+background-opacity = 0.75
+background-blur = true
+font-style = JetBrainsMono NF Regular
+
+keybind = ctrl+shift+a=select_all
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+

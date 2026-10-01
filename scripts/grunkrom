@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+ssh -p 777 nikao@192.168.18.10
