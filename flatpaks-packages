@@ -1,6 +1,5 @@
 com.spotify.Client
 com.valvesoftware.Steam
-com.discordapp.Discord
 com.obsproject.Studio
 md.obsidian.Obsidian
 com.bitwarden.desktop
@@ -14,3 +13,4 @@ com.rtosta.zapzap
 org.audacityteam.Audacity
 net.lutris.Lutris
 app.zen_browser.zen
+org.nicotine_plus.Nicotine

@@ -13,3 +13,4 @@ validation() {
     done
     echo "$dummy"
 }
+

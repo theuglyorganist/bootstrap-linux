@@ -3,7 +3,6 @@ export scriptDir="$(dirname "$(realpath "$0")")"
 source "$scriptDir"/functions.sh
 echo ""
 
-
 #Granting super user powers
 sudo -v
 if [ $? -eq 0 ]; then
@@ -55,6 +54,18 @@ if [[ "$minimalPInstall" == "y" && "$fullSetup" == "n" ]]; then
     bash "$scriptDir"/"$PM"/minimal-installation.sh
 else 
     bash "$scriptDir"/"$PM"/full-installation.sh
+
+    #Installing discord
+    echo "Downloading and installing discord..."
+    sudo mkdir -p /opt
+    sudo wget -O /opt/discord.tar.gz "https://discord.com/api/download/stable?platform=linux&format=tar.gz"
+    sudo tar -xf /opt/discord.tar.gz -C /opt
+    sudo rm /opt/discord.tar.gz
+    sudo mkdir -p /usr/share/applications/
+    sudo sed  -i 's|Exec=/usr/bin/discord --url -- %u|Exec=/opt/Discord/discord --url -- %u|' /opt/Discord/discord.desktop
+    sudo sed  -i 's|Icon=discord|Icon=/opt/Discord/discord.png|' /opt/Discord/discord.desktop
+    sudo cp /opt/Discord/discord.desktop /usr/share/applications/
+
     echo ""
     echo "Installing flatpaks."
     while read flatpak; do
