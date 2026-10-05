@@ -6,7 +6,7 @@ while read package; do
     echo ""
     echo "Installing $package"
     sudo pacman -S "$package" --noconfirm
-done < "$scriptDi/$PM/packagesList/minimal"
+done < "$scriptDir/$PM/packagesList/minimal"
 
 while read package; do
     echo ""
