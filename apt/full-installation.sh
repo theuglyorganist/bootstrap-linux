@@ -7,7 +7,7 @@ while read package; do
     echo "Installing $package"
     sudo apt install "$package" -y
 
-done < "$scriptDir/$PM/packagesList/full"
+done < "$scriptDir/$PM/packagesList/minimal"
 while read package; do
     echo ""
     echo "Installing $package"
