@@ -81,17 +81,5 @@ if [[ "$fullSetup" == "y" || "$postInstallation" == "y" ]]; then
     bash "$scriptDir"/post-installation.sh
 fi
 
-#Wallpapers repo clone
-if [[ -d "$HOME/Pictures" ]]; then
-    echo "Wallpapers directory already exist"
-else
-    if [[ "$fullSetup" == "n" ]]; then
-        wallpapersRepo=$(validation "Wanna clone TheUglyOrganist's wallpapers repository? [Y/n] ")
-    fi
-    if [[ "$fullSetup" == "y" || "$wallpapersRepo" == "y" ]]; then
-        mkdir -p $HOME/Pictures
-        echo "Cloning repo..."
-        git clone https://github.com/theuglyorganist/Wallpapers $HOME/Pictures/
-    fi
-fi
+
 

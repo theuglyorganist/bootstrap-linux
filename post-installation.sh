@@ -38,7 +38,32 @@ if [[ "$gitIdentity" == "y" ||  "$fullSetup" == "y" ]]; then
 fi
 git config --global core.editor "nano"
 
-echo "Moving scripts to path..."
-sudo mkdir -p /usr/bin/scripts
-echo 'export PATH="$PATH:/usr/bin/scripts"' >> "$HOME/.bashrc" 
-sudo cp "$scriptDir"/scripts/* /usr/bin/scripts/
+#Moving and creating scripts directory
+if [[ -d /usr/bin/scripts ]]; then
+    echo "Scripts directory already exist."
+else
+    if [[ "$fullSetup" == "n" ]]; then
+        scriptsDirectory=$(validation "Wanna copy bash scripts directory? [Y/n] ")
+    fi
+    if [[ "$fullSetup" == "y" || "$scriptsDirectory" == "y" ]]; then
+        echo "Moving scripts to path..."
+        sudo mkdir -p /usr/bin/scripts
+        echo 'export PATH="$PATH:/usr/bin/scripts"' >> "$HOME/.bashrc" 
+        sudo cp "$scriptDir"/scripts/* /usr/bin/scripts/
+    fi
+fi
+
+#Wallpapers repo clone
+if [[ -d "$HOME/Pictures/Wallpapers" ]]; then
+    echo "Wallpapers directory already exist"
+else
+    if [[ "$fullSetup" == "n" ]]; then
+        wallpapersRepo=$(validation "Wanna clone TheUglyOrganist's wallpapers repository? [Y/n] ")
+    fi
+    if [[ "$fullSetup" == "y" || "$wallpapersRepo" == "y" ]]; then
+        mkdir -p $HOME/Pictures
+        echo "Cloning repo..."
+        git clone https://github.com/theuglyorganist/Wallpapers $HOME/Pictures/
+    fi
+fi
+
